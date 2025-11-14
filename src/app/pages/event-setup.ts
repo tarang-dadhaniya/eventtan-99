@@ -350,7 +350,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       class="flex flex-wrap items-center gap-1 p-2 border-b border-[#CED4DA] bg-white rounded-t"
                     >
                       <!-- Undo/Redo -->
-                      <div class="flex items-center gap-0.5 border-r border-[#E9ECEF] pr-2">
+                      <div
+                        class="flex items-center gap-0.5 border-r border-[#E9ECEF] pr-2"
+                      >
                         <button
                           type="button"
                           class="p-1 hover:bg-gray-100 rounded transition-colors"
@@ -390,7 +392,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       </div>
 
                       <!-- Text Style -->
-                      <div class="flex items-center border-r border-[#E9ECEF] pr-2">
+                      <div
+                        class="flex items-center border-r border-[#E9ECEF] pr-2"
+                      >
                         <button
                           type="button"
                           class="flex items-center gap-1 px-2 py-1 hover:bg-gray-100 rounded text-sm text-[#212529]"
@@ -412,7 +416,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       </div>
 
                       <!-- Text Formatting -->
-                      <div class="flex items-center gap-0.5 border-r border-[#E9ECEF] pr-2">
+                      <div
+                        class="flex items-center gap-0.5 border-r border-[#E9ECEF] pr-2"
+                      >
                         <button
                           type="button"
                           class="p-1 hover:bg-gray-100 rounded transition-colors"
@@ -488,7 +494,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                       </div>
 
                       <!-- Lists -->
-                      <div class="flex items-center gap-0.5 border-r border-[#E9ECEF] pr-2">
+                      <div
+                        class="flex items-center gap-0.5 border-r border-[#E9ECEF] pr-2"
+                      >
                         <button
                           type="button"
                           class="p-1 hover:bg-gray-100 rounded transition-colors"
@@ -613,7 +621,9 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                 </div>
 
                 <!-- Banner Type and Visibility -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6"
+                >
                   <!-- Banner Type -->
                   <div class="flex flex-col">
                     <label class="text-base font-medium text-[#878A99] mb-2"
@@ -752,12 +762,22 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                         [(ngModel)]="formData.timeZone"
                         class="w-full h-10 px-4 pr-10 border border-[#CED4DA] rounded text-base text-[#686868] focus:outline-none focus:border-[#049AD0] appearance-none bg-white transition-colors"
                       >
-                        <option value="(GMT+05:30) Mumbai">(GMT+05:30) Mumbai</option>
-                        <option value="(GMT+05:30) Kolkata">(GMT+05:30) Kolkata</option>
-                        <option value="(GMT+05:30) Delhi">(GMT+05:30) Delhi</option>
+                        <option value="(GMT+05:30) Mumbai">
+                          (GMT+05:30) Mumbai
+                        </option>
+                        <option value="(GMT+05:30) Kolkata">
+                          (GMT+05:30) Kolkata
+                        </option>
+                        <option value="(GMT+05:30) Delhi">
+                          (GMT+05:30) Delhi
+                        </option>
                         <option value="(GMT+00:00) UTC">(GMT+00:00) UTC</option>
-                        <option value="(GMT-05:00) New York">(GMT-05:00) New York</option>
-                        <option value="(GMT+01:00) London">(GMT+01:00) London</option>
+                        <option value="(GMT-05:00) New York">
+                          (GMT-05:00) New York
+                        </option>
+                        <option value="(GMT+01:00) London">
+                          (GMT+01:00) London
+                        </option>
                       </select>
                       <svg
                         class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"
@@ -954,13 +974,15 @@ export class EventSetupComponent implements OnInit {
     eventName: "14th Engimach",
     logo: null as File | null,
     banner: null as File | null,
-    welcomeMessage: "Over the years, ENGIMACH has been one of the prime contributors to the development of the machine tools industry, that enables its participants and visitors with cutting edge and power house technology that stands for engineering excellence, innovation, quality and reliability. ENGIMACH is not just a trade show but a platform to see, understand and learn where the industry is heading to. The showcase at ENGIMACH shall offer a quintessential launch pad for new ideas, products and services, a conducive environment for forging joint ventures, collaborations and an open marketplace to source ideal solutions with an anticipated 1,00,000 visitors and beneficiaries",
+    welcomeMessage:
+      "Over the years, ENGIMACH has been one of the prime contributors to the development of the machine tools industry, that enables its participants and visitors with cutting edge and power house technology that stands for engineering excellence, innovation, quality and reliability. ENGIMACH is not just a trade show but a platform to see, understand and learn where the industry is heading to. The showcase at ENGIMACH shall offer a quintessential launch pad for new ideas, products and services, a conducive environment for forging joint ventures, collaborations and an open marketplace to source ideal solutions with an anticipated 1,00,000 visitors and beneficiaries",
     bannerType: "Banner",
     visibility: "Public",
     startDate: "15/05/2023",
     endDate: "31/05/2023",
     timeZone: "(GMT+05:30) Mumbai",
-    venue: "Exhibition Centre, Swarnim Park, Near Jilla panchayat, Sector 17, Gandhinagar, Gujarat 382016",
+    venue:
+      "Exhibition Centre, Swarnim Park, Near Jilla panchayat, Sector 17, Gandhinagar, Gujarat 382016",
     city: "Gandhinagar",
     state: "Gujarat",
     country: "India",
