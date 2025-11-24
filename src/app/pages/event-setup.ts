@@ -1314,33 +1314,26 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                 *ngIf="currentTab === 'content'"
                 class="bg-white rounded shadow-md border border-[#E9E9E9]"
               >
-                <!-- Selected Features Tabs -->
-                <div class="border-b border-[#CED4DA]">
-                  <div class="flex items-center gap-0 px-8 pt-8">
+                <!-- Selected Features Tabs - Only Show If Features Are Selected -->
+                <div *ngIf="activeFeatures.length > 0" class="border-b border-[#CED4DA]">
+                  <div class="flex items-center gap-0 px-8 pt-0">
                     <button
-                      *ngFor="let featureId of activeFeatures; let i = index"
+                      *ngFor="let featureId of activeFeatures; let i = index; let isLast = last"
                       [class.active-feature-tab]="i === selectedFeatureIndex"
                       (click)="selectedFeatureIndex = i"
-                      class="relative flex items-center gap-2 px-6 py-2.5 bg-white border border-[#CED4DA] shadow-sm transition-all hover:bg-gray-50"
+                      class="relative flex items-center gap-3 px-6 py-4 bg-white border-b-2 transition-all font-medium"
                       [ngClass]="{
-                        'bg-[#009FD8] text-white border-[#009FD8]':
+                        'border-[#009FD8] text-[#009FD8] bg-[#F0F7FB]':
                           i === selectedFeatureIndex,
-                        'bg-white text-[#686868] border-[#CED4DA]':
+                        'border-transparent text-[#686868] hover:text-[#049AD0] hover:bg-gray-50':
                           i !== selectedFeatureIndex,
-                        'rounded-l': i === 0 && i !== selectedFeatureIndex,
-                        'rounded-r':
-                          i === activeFeatures.length - 1 &&
-                          i !== selectedFeatureIndex,
-                        rounded:
-                          i === selectedFeatureIndex ||
-                          (i === 0 && i === activeFeatures.length - 1),
                       }"
                     >
                       <div
                         [innerHTML]="getFeatureTabIcon(featureId, i)"
-                        class="w-6 h-6"
+                        class="w-5 h-5 flex items-center justify-center flex-shrink-0"
                       ></div>
-                      <span class="text-sm md:text-base font-normal">
+                      <span class="text-sm md:text-base whitespace-nowrap">
                         {{ getFeatureLabel(featureId) }}
                       </span>
                     </button>
@@ -1350,26 +1343,64 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                 <!-- Content Area -->
                 <div class="p-8" style="min-height: 400px;">
                   <div
+                    *ngIf="activeFeatures.length > 0"
                     class="flex flex-col items-center justify-center py-16 text-center"
                   >
                     <div
-                      class="w-16 h-16 mb-6 flex items-center justify-center"
+                      class="w-24 h-24 mb-6 flex items-center justify-center bg-[#F0F7FB] rounded-lg"
                       [innerHTML]="
                         getFeatureIcon(activeFeatures[selectedFeatureIndex])
                       "
                     ></div>
-                    <h3 class="text-xl font-semibold text-[#181C32] mb-2">
+                    <h3 class="text-2xl font-bold text-[#181C32] mb-3">
                       {{
                         getFeatureLabel(activeFeatures[selectedFeatureIndex])
                       }}
-                      Content
+                    </h3>
+                    <p class="text-base text-[#686868] max-w-lg mb-6">
+                      Configure the content and settings for the
+                      {{
+                        getFeatureLabel(activeFeatures[selectedFeatureIndex])
+                      }}
+                      feature.
+                    </p>
+                    <div
+                      class="bg-[#E8F4F8] border border-[#49B5D8] rounded-lg p-4 max-w-lg text-left"
+                    >
+                      <p class="text-sm text-[#049AD0] font-medium">
+                        💡 Content configuration for
+                        <strong>{{ getFeatureLabel(activeFeatures[selectedFeatureIndex]) }}</strong>
+                        will be available in the next release.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    *ngIf="activeFeatures.length === 0"
+                    class="flex flex-col items-center justify-center py-20 text-center"
+                  >
+                    <svg
+                      width="80"
+                      height="80"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="mb-6 opacity-30"
+                    >
+                      <path
+                        d="M28 4H4C2.89543 4 2 4.89543 2 6V26C2 27.1046 2.89543 28 4 28H28C29.1046 28 30 27.1046 30 26V6C30 4.89543 29.1046 4 28 4ZM28 10H4V6H28V10ZM4 26V14H28V26H4Z"
+                        fill="#CED4DA"
+                      />
+                      <path d="M8 18H12V22H8V18Z" fill="#CED4DA" />
+                      <path d="M16 18H20V22H16V18Z" fill="#CED4DA" />
+                      <path d="M24 18H28V22H24V18Z" fill="#CED4DA" />
+                    </svg>
+                    <h3 class="text-xl font-semibold text-[#878A99] mb-2">
+                      No Features Selected
                     </h3>
                     <p class="text-base text-[#686868] max-w-md">
-                      Configure the content for
-                      {{
-                        getFeatureLabel(activeFeatures[selectedFeatureIndex])
-                      }}
-                      feature here.
+                      Go back to the Event Features tab and select features to
+                      configure their content.
                     </p>
                   </div>
                 </div>
@@ -1381,6 +1412,8 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                   <button
                     (click)="onNext()"
                     class="flex items-center gap-2 px-5 py-2 bg-[#009FD8] hover:bg-[#0385b5] text-white rounded font-semibold transition-colors"
+                    [disabled]="activeFeatures.length === 0"
+                    [ngClass]="{'opacity-50 cursor-not-allowed': activeFeatures.length === 0}"
                   >
                     <span>Next</span>
                     <svg
