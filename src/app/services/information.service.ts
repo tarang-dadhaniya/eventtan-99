@@ -5,8 +5,11 @@ export interface Information {
   id: string;
   eventId: string;
   title: string;
+  floorPlanFor: string;
   type: "Standard" | "External";
-  floorPlanTypes: string[];
+  description?: string;
+  profileImage?: string;
+  featuredImages?: string[];
 }
 
 @Injectable({
