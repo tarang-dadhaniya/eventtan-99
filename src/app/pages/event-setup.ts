@@ -3186,12 +3186,6 @@ const EVENT_OVERVIEW_ICON = `<svg width="22" height="22" viewBox="0 0 22 22" fil
                               >
                                 {{ image.title }}
                               </h3>
-                              <p
-                                *ngIf="image.caption"
-                                class="text-sm text-[#686868] mt-1 line-clamp-1"
-                              >
-                                {{ image.caption }}
-                              </p>
                             </div>
                           </div>
                         </div>
