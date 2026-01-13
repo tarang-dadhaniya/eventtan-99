@@ -4237,12 +4237,8 @@ export class EventSetupComponent implements OnInit {
       this.socialMediaService.deleteSocialMedia(this.socialMediaToDelete);
       this.loadSocialMedia();
     } else if (this.testimonialToDelete) {
-      const index = this.testimonialsList.findIndex(
-        (t) => t.id === this.testimonialToDelete,
-      );
-      if (index > -1) {
-        this.testimonialsList.splice(index, 1);
-      }
+      this.testimonialService.deleteTestimonial(this.testimonialToDelete);
+      this.loadTestimonials();
     } else if (this.galleryImageToDelete) {
       this.imageGalleryService.deleteGalleryImage(this.galleryImageToDelete);
       this.loadGalleryImages();
