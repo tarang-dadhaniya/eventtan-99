@@ -26,7 +26,7 @@ interface FeaturedImage {
           class="flex items-center justify-between px-[20px] py-[16px] flex-shrink-0"
         >
           <h2 class="text-[22px] font-medium text-[#3F4254]">
-            Add Information
+            Add Floor Plan
           </h2>
           <button
             (click)="onClose()"
