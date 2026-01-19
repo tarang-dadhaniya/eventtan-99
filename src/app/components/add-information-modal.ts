@@ -153,9 +153,6 @@ interface FeaturedImage {
                 >
               </label>
             </div>
-
-            <!-- Description Field (shown only for Standard type) -->
-            <div *ngIf="formData.type === 'Standard'">
               <label class="block text-base font-medium text-[#212529] mb-2"
                 >Description</label
               >
